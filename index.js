@@ -39,7 +39,6 @@ client.on('message', message => {
 			thumbnail: 'https://i.imgur.com/1FI1Elb.gif',
 		});
 
-		createEmbed(embed, message);
 		return message.channel.send(embed);
 	}
 
