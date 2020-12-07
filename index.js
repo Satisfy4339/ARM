@@ -48,7 +48,7 @@ client.on('message', message => {
 			thumbnail: 'https://i.imgur.com/1FI1Elb.gif',
 		});
 
-		postEmbed(embed);
+		postEmbed(embed, message);
 	}
 
 	try {
@@ -76,7 +76,7 @@ const createEmbed = params => {
 /**
  * Post the embed
  */
-const postEmbed = embed => {
+const postEmbed = ({ embed, message }) => {
 	return message.channel.send(embed);
 };
 
