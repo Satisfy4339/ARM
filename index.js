@@ -29,17 +29,8 @@ client.on('message', message => {
 
 	if (!client.commands.has(commandName)) return;
 	const command = client.commands.get(commandName);
-	if (!args.length) {
-		const embed = new Discord.MessageEmbed()
-			.setColor('#fc5a74')
-			.setAuthor('Error')
-			.setDescription('You forgot to provide enough arguments.')
-			.setFooter('Error Message')
-			.setThumbnail('https://i.imgur.com/1FI1Elb.gif');
-		return message.channel.send(embed);
-	}
 
-	if (!args.length) {
+	if(command.args && !args.length) {
 		const embed = createEmbed({
 			color: '#fc5a74',
 			author: 'Error',
@@ -48,12 +39,14 @@ client.on('message', message => {
 			thumbnail: 'https://i.imgur.com/1FI1Elb.gif',
 		});
 
-		postEmbed(embed);
+		createEmbed(embed, message);
+		return message.channel.send(embed);
 	}
 
 	try {
 		command.execute(message, args);
-	} catch (error) {
+	}
+	catch (error) {
 		console.error(error);
 		message.reply('There was an issue with executing that command!');
 	}
@@ -71,13 +64,6 @@ const createEmbed = params => {
 		.setFooter(footer)
 		.setThumbnail(thumbnail);
 	return embed;
-};
-
-/**
- * Post the embed
- */
-const postEmbed = embed => {
-	return message.channel.send(embed);
 };
 
 client.login(token);
