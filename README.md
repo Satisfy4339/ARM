@@ -30,4 +30,4 @@ ARM is an open source, Discord bot that is constantly growing with features. It 
 
 ## Help
 
-If you have any questions about the bot or the code you can raise an issue above or join the official ARM Discord.
+If you have any questions about the bot or the code you can raise an issue above or join the official [ARM](https://discord.gg/8sJt77RxbU) Discord.
