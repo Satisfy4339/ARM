@@ -1,14 +1,11 @@
-<h1 align="center">
-  <br>
+<h1 style="text-align:center;">
   <a href="https://github.com/Satisfy4339/ARM"><img src="https://i.imgur.com/HEguahZ.png"></a>
-  <br>
   ARM (Automation, Regulation, Moderation)
-  <br>
 </h1>
 
-<h3 align=center>A moderation bot built with <a href=https://github.com/discordjs/discord.js>discord.js</a></h3>
+<h3 style="text-align:center;">A moderation bot built with <a href=https://github.com/discordjs/discord.js>discord.js</a></h3>
 
-<p align="center">
+<p style="text-align:center;">
   <a href="#about">About</a>
   •
   <a href="#commands">Commands</a>
