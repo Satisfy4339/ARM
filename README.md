@@ -1,5 +1,5 @@
-### ARM
- # also known as Automation, Regulation, Moderation
+# ARM
+ ### also known as Automation, Regulation, Moderation
     - is a moderation bot packed with usefull features for any Discord community
 
 ## todo
