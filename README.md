@@ -1,5 +1,6 @@
-## ARM
-# not just another discord bot
+### ARM
+ # also known as Automation, Regulation, Moderation
+    - is a moderation bot packed with usefull features for any Discord community
 
 ## todo
 - Add a description about the project
