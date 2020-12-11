@@ -4,7 +4,6 @@ module.exports = {
 	name: 'help',
 	description: 'Lists all of my commands or info about a specific command.',
 	aliases: ['commands'],
-	usage: '<command name>',
 	cooldown: 5,
 	args: false,
 	category : 'utilities',

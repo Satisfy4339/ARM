@@ -35,7 +35,7 @@ client.on('message', message => {
 		const embed = createEmbed({
 			color: '#dc4b4b',
 			author: 'Error | You forgot to provide some arguments',
-			footer: `The propper usage would be \`${prefix}${command.name} ${command.usage}\``,
+			description: `The propper usage would be \`${prefix}${command.name} ${command.usage}\``,
 		});
 
 		return message.channel.send(embed);
@@ -72,11 +72,11 @@ client.on('message', message => {
  * Create embed function
  */
 const createEmbed = params => {
-	const { color, author, footer } = params;
+	const { color, author, description } = params;
 	const embed = new Discord.MessageEmbed()
 		.setColor(color)
 		.setAuthor(author, 'https://i.imgur.com/dOo8hhd.png')
-		.setFooter(footer);
+		.setDescription(description);
 	return embed;
 };
 
