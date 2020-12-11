@@ -3,16 +3,24 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'ping',
 	description: 'Bot Ping',
+	cooldown: 3,
 	args: false,
+	aliases: ['latency'],
+	category: 'utilities',
 	execute(message) {
-		message.channel.send('Pinging . . .').then(m => {
-			const ping = m.createdTimestamp - message.createdTimestamp;
+		message.channel.send('📡 | Pinging the bot . . .').then(m => {
+			setTimeout(function() {
+				const ping = m.createdTimestamp - message.createdTimestamp;
+				const api = message.client.ws.ping;
 
-			const embed = new MessageEmbed()
-				.setAuthor(`My ping is ${ping} ms`, 'https://i.imgur.com/FycH6y3.png')
-				.setColor('#70c7bc');
+				const embed = new MessageEmbed()
+					.setAuthor('Bot Latency')
+					.setDescription(`Bot Latency: \`${ping} ms\`\nAPI Latency: \`${api} ms\``)
+					.setColor('#70c7bc')
+					.setThumbnail('https://i.imgur.com/bjioQ87.png');
 
-			m.edit('', embed);
+				m.edit('', embed);
+			}, 2000);
 		});
 	},
 };
