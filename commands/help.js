@@ -11,8 +11,11 @@ module.exports = {
 
 	execute(client, message) {
 		let util = '', fun = '';
+		let mod = '', oth = '';
 		client.commands.forEach(cmd => {
 			if(cmd.category === 'utility') util += cmd.name + ', ';
+			else if(cmd.category === 'mod') mod += cmd.name + ', ';
+			else if(cmd.category === 'other') oth += cmd.name + ', ';
 			else if(cmd.category === 'fun') fun += cmd.name + ', ';
 		});
 
@@ -23,8 +26,10 @@ module.exports = {
 			.setDescription('Here is list of all available commands based on category')
 			.setThumbnail(message.guild.iconURL({ format: 'png', dynamic: true }) || client.user.displayAvatarURL({ format: 'png', dynamic: true }))
 			.addFields(
-				{ name: '• Utility', value : `\`${util}\``, inline : true },
-				{ name: '• Fun', value : `\`${fun}\``, inline : true },
+				{ name: '• Utility', value : `\`${util || 'comming soon'}\``, inline : true },
+				{ name: '• Mod', value : `\`${mod || 'comming soon'}\``, inline : true },
+				{ name: '• Other', value : `\`${oth || 'comming soon'}\``, inline : true },
+				{ name: '• Fun', value : `\`${fun || 'comming soon'}\``, inline :true },
 			);
 
 		return message.channel.send(cmdEmbed);

@@ -1,13 +1,25 @@
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
 	name: 'reload',
 	description: 'Reloads a specific command.',
 	aliases: ['refresh, r'],
 	cooldown: 5,
 	args: false,
-	category : 'utility',
 	guildOnly: true,
 
 	execute(client, message, args) {
+		if (message.author.id !== '601783394334015498') {
+			const noCommand = new MessageEmbed()
+				.setColor('#dc4b4b')
+				.setAuthor('Error | You don\'t have permission to use this command!', 'https://i.imgur.com/dOo8hhd.png')
+				.setDescription('This command can only be used by <@601783394334015498>');
+
+			return message.reply(noCommand)
+				.then(msg => {
+					msg.delete({ timeout: 6000 });
+				});
+		}
 		if (!args.length) {
 			return message.channel.send(`You didn't pass any command to reload, ${message.author}!`)
 				.then(msg => {
