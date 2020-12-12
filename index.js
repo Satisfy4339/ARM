@@ -29,7 +29,17 @@ client.on('message', message => {
 	const command = client.commands.get(commandName)
 	|| client.commands.find(commands => commands.aliases && commands.aliases.includes(commandName));
 
-	if (!command) return;
+	if (!command) {
+		const noCommand = new Discord.MessageEmbed()
+			.setColor('#dc4b4b')
+			.setAuthor('Error | This command doesn\'t exist', 'https://i.imgur.com/dOo8hhd.png')
+			.setDescription(`Try using \`${prefix}help\` to see existing commands`);
+
+		return message.reply(noCommand)
+			.then(msg => {
+				msg.delete({ timeout: 6000 });
+			});
+	}
 
 	if (command.guildOnly && message.channel.type === 'dm') {
 		const guildOnlyEmbed = new Discord.MessageEmbed()
