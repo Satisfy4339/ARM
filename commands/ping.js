@@ -6,8 +6,10 @@ module.exports = {
 	cooldown: 3,
 	args: false,
 	aliases: ['latency'],
-	category: 'utilities',
-	execute(message) {
+	category: 'utility',
+	guildOnly: false,
+
+	execute(client, message) {
 		message.channel.send('📡 | Pinging the bot . . .').then(m => {
 			setTimeout(function() {
 				const ping = m.createdTimestamp - message.createdTimestamp;

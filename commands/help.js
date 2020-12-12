@@ -6,19 +6,27 @@ module.exports = {
 	aliases: ['commands'],
 	cooldown: 5,
 	args: false,
-	category : 'utilities',
+	category : 'utility',
+	guildOnly: true,
 
-	execute(message) {
-		const serverIcon = message.guild.iconURL();
-		const userIcon = message.author.displayAvatarURL();
-		const userName = message.author.username;
+	execute(client, message) {
+		let util = '', fun = '';
+		client.commands.forEach(cmd => {
+			if(cmd.category === 'utility') util += cmd.name + ', ';
+			else if(cmd.category === 'fun') fun += cmd.name + ', ';
+		});
 
-		const exampleEmbed = new MessageEmbed()
+		const cmdEmbed = new MessageEmbed()
 			.setColor('#70c7bc')
-			.setAuthor((userName), (userIcon))
-			.setThumbnail(serverIcon)
-			.setTitle('Here is a list of my commands');
+			.setAuthor(message.author.username, message.author.displayAvatarURL({ format: 'png', dynamic: true }))
+			.setTitle('Available Commads')
+			.setDescription('Here is list of all available commands based on category')
+			.setThumbnail(message.guild.iconURL({ format: 'png', dynamic: true }) || client.user.displayAvatarURL({ format: 'png', dynamic: true }))
+			.addFields(
+				{ name: '• Utility', value : `\`${util}\``, inline : true },
+				{ name: '• Fun', value : `\`${fun}\``, inline : true },
+			);
 
-		message.channel.send(exampleEmbed);
+		return message.channel.send(cmdEmbed);
 	},
 };

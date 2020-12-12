@@ -31,15 +31,30 @@ client.on('message', message => {
 
 	if (!command) return;
 
-	if(command.args && !args.length) {
-		const embed = createEmbed({
-			color: '#dc4b4b',
-			author: 'Error | You forgot to provide some arguments',
-			description: `The propper usage would be \`${prefix}${command.name} ${command.usage}\``,
-		});
+	if (command.guildOnly && message.channel.type === 'dm') {
+		const guildOnlyEmbed = new Discord.MessageEmbed()
+			.setColor('#dc4b4b')
+			.setAuthor('Error | I can`t run this command inside Dm\'s', 'https://i.imgur.com/dOo8hhd.png')
+			.setDescription(`Try using \`${prefix}${command.name} ${command.usage}\` inside a server`);
 
-		return message.channel.send(embed);
+		return message.reply(guildOnlyEmbed)
+			.then(msg => {
+				msg.delete({ timeout: 6000 });
+			});
 	}
+
+	if(command.args && !args.length) {
+		const argsEmbed = new Discord.MessageEmbed()
+			.setColor('#dc4b4b')
+			.setAuthor('Error | You forgot to provide some arguments', 'https://i.imgur.com/dOo8hhd.png')
+			.setDescription(`The propper usage would be \`${prefix}${command.name} ${command.usage}\``);
+
+		return message.reply(argsEmbed)
+			.then(msg => {
+				msg.delete({ timeout: 6000 });
+			});
+	}
+
 	if (!cooldowns.has(command.name)) {
 		cooldowns.set(command.name, new Discord.Collection());
 	}
@@ -53,31 +68,25 @@ client.on('message', message => {
 
 		if (now < expirationTime) {
 			const timeLeft = (expirationTime - now) / 1000;
-			return message.reply(`Please wait \`${timeLeft.toFixed(1)} second(s)\` before using the \`${command.name}\` command.`);
+			return message.reply(`Please wait \`${timeLeft.toFixed(1)} second(s)\` before using the \`${command.name}\` command.`)
+				.then(msg => {
+					msg.delete({ timeout: 6000 });
+				});
 		}
 	}
 	timestamps.set(message.author.id, now);
 	setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
 	try {
-		command.execute(message, args);
+		command.execute(client, message, args);
 	}
 	catch (error) {
 		console.error(error);
-		message.reply('There was an issue with executing that command!');
+		message.reply('There was an issue with executing that command!')
+			.then(msg => {
+				msg.delete({ timeout: 6000 });
+			});
 	}
 });
-
-/**
- * Create embed function
- */
-const createEmbed = params => {
-	const { color, author, description } = params;
-	const embed = new Discord.MessageEmbed()
-		.setColor(color)
-		.setAuthor(author, 'https://i.imgur.com/dOo8hhd.png')
-		.setDescription(description);
-	return embed;
-};
 
 client.login(token);

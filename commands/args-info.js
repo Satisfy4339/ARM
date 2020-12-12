@@ -8,7 +8,9 @@ module.exports = {
 	aliases: ['ai', 'a_i'],
 	usage: 'message',
 	category: 'fun',
-	execute(message, args) {
+	guildOnly: true,
+
+	execute(client, message, args) {
 		const userIcon = message.author.displayAvatarURL();
 		const userName = message.author.username;
 		const exampleEmbed = new MessageEmbed()
