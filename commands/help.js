@@ -14,7 +14,7 @@ module.exports = {
 		let mod = '', oth = '';
 		client.commands.forEach(cmd => {
 			if(cmd.category === 'utility') util += cmd.name + ', ';
-			else if(cmd.category === 'mod') mod += cmd.name + ', ';
+			else if(cmd.category === 'moderation') mod += cmd.name + ', ';
 			else if(cmd.category === 'other') oth += cmd.name + ', ';
 			else if(cmd.category === 'fun') fun += cmd.name + ', ';
 		});
