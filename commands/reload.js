@@ -3,10 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'reload',
 	description: 'Reloads a specific command.',
-	aliases: ['refresh, r'],
-	cooldown: 5,
-	args: false,
-	guildOnly: true,
+	guildOnly: false,
 
 	execute(client, message, args) {
 		if (message.author.id !== '601783394334015498') {

@@ -2,10 +2,10 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'args-info',
-	description: 'Arguments Info',
+	description: 'Gives you information about imputed arguments.',
 	cooldown: 3,
 	args: true,
-	aliases: ['ai', 'a_i'],
+	aliases: ['ai', 'a-i', 'args_info', 'a_i'],
 	usage: 'message',
 	category: 'fun',
 	guildOnly: true,

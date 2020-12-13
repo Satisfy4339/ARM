@@ -2,12 +2,12 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'ping',
-	description: 'Bot Ping',
-	cooldown: 3,
-	args: false,
 	aliases: ['latency'],
-	category: 'utility',
-	guildOnly: false,
+	cooldown: 5,
+	description: 'Gathers information about the latency of the bot.',
+	args: false,
+	category : 'utility',
+	guildOnly: true,
 
 	execute(client, message) {
 		message.channel.send('📡 | Pinging the bot . . .').then(m => {
