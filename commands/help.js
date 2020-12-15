@@ -4,7 +4,7 @@ const { prefix } = require('../config.json');
 module.exports = {
 	name: 'help',
 	aliases: ['commands'],
-	usage: 'command',
+	usage: 'commandName',
 	cooldown: 5,
 	description: 'Lists all of my commands or info about a specific command.',
 	args: false,
@@ -30,10 +30,10 @@ module.exports = {
 				.setDescription(`You can send \`${prefix}help [command name]\` to get info on a specific command! \n\n**<argument>** This means the argument is required. \n**[argument]** This means the argument is option. \n**[ A | B ]** This means the it can be either A or B. \n*__You do not type in the brackets!__*`)
 				.setThumbnail(message.guild.iconURL({ format: 'png', dynamic: true }) || client.user.displayAvatarURL({ format: 'png', dynamic: true }))
 				.addFields(
-					{ name: '• Utility', value : `\`${util || 'comming soon'}\``, inline : true },
-					{ name: '• Mod', value : `\`${mod || 'comming soon'}\``, inline : true },
-					{ name: '• Other', value : `\`${oth || 'comming soon'}\``, inline : true },
-					{ name: '• Fun', value : `\`${fun || 'comming soon'}\``, inline :true },
+					{ name: '• Utility', value : `\`\`\`${util || 'comming soon'}\`\`\``, inline : true },
+					{ name: '• Mod', value : `\`\`\`${mod || 'comming soon'}\`\`\``, inline : true },
+					{ name: '• Other', value : `\`\`\`${oth || 'comming soon'}\`\`\``, inline : true },
+					{ name: '• Fun', value : `\`\`\`${fun || 'comming soon'}\`\`\``, inline :true },
 				);
 
 			return message.channel.send(cmdEmbed);
@@ -63,8 +63,8 @@ module.exports = {
 			.setDescription(`${cmdDescription || 'NO DESCRIPTION'}`)
 			.setThumbnail(message.guild.iconURL({ format: 'png', dynamic: true }) || client.user.displayAvatarURL({ format: 'png', dynamic: true }))
 			.addFields(
-				{ name: '• Command Aliases:', value : `\`\`\`${cmdAliases || 'NO KNOWN ALIASES'}\`\`\``, inline : false },
-				{ name: '• Command Usage:', value : `**${cmdUsage || 'NO KNOWN USAGE'}**`, inline : false },
+				{ name: '• Command Aliases:', value : `\`${cmdAliases || 'NO KNOWN ALIASES'}\``, inline : false },
+				{ name: '• Command Usage:', value : `\`\`\`${cmdUsage || 'NO KNOWN USAGE'}\`\`\``, inline : false },
 				{ name: '• Command Cooldown:', value : `*${cmdCooldown || 'NO COOLDOWN'}*`, inline : false },
 			);
 		message.channel.send(commandEmbed);
