@@ -97,6 +97,7 @@ client.on('message', message => {
 				msg.delete({ timeout: 6000 });
 			});
 	}
+	process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
 });
 
 client.login(token);

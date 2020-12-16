@@ -17,7 +17,7 @@ module.exports = {
 		const prefixEmbed = new MessageEmbed()
 			.setColor('#70c7bc')
 			.setTitle('Bot Prefix')
-			.setDescription(`Prefix for the bot is:  \`${prefix}\``)
+			.setDescription(`Prefixes for the bot are:  \`${prefix}\` | \`${prefix.toLowerCase()}\``)
 			.setFooter((userName), (userIcon));
 
 		message.channel.send(prefixEmbed);
