@@ -4,7 +4,7 @@ const { prefix } = require('../config.json');
 module.exports = {
 	name: 'prefix',
 	aliases: ['symbol'],
-	usage: '',
+	usage: ' ',
 	cooldown: 5,
 	description: 'Shows the bot\'s prefix.',
 	args: false,

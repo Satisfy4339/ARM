@@ -6,6 +6,7 @@ module.exports = {
 	name: 'bot-info',
 	aliases: ['bi', 'b-i'],
 	cooldown: 3,
+	usage: ' ',
 	description: 'Gathers information about the Bot',
 	args: false,
 	category : 'utility',
