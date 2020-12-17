@@ -18,6 +18,7 @@ for (const file of commandFiles) {
 client.once('ready', () => {
 	console.log('Bot is now Online!');
 	console.log('Prefix for ARM is:', prefix);
+	client.user.setActivity(`for ${prefix}help`, { type: 'WATCHING' });
 });
 
 client.on('message', message => {
