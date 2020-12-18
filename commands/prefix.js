@@ -8,7 +8,7 @@ module.exports = {
 	cooldown: 5,
 	description: 'Shows the bot\'s prefix.',
 	args: false,
-	category : 'utility',
+	category : 'information',
 	guildOnly: true,
 
 	execute(client, message) {

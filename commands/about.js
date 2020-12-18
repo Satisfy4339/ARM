@@ -3,13 +3,13 @@ const { version, library, creator, botInvite, website, supportServer } = require
 
 
 module.exports = {
-	name: 'bot-info',
-	aliases: ['bi', 'b-i'],
+	name: 'about',
+	aliases: ['stats'],
 	cooldown: 3,
 	usage: ' ',
 	description: 'Gathers information about the Bot',
 	args: false,
-	category : 'utility',
+	category : 'information',
 	guildOnly: true,
 
 	execute(client, message) {

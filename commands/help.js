@@ -16,11 +16,13 @@ module.exports = {
 		if (!args.length) {
 			let util = '', fun = '';
 			let mod = '', oth = '';
+			let inf = '';
 			client.commands.forEach(cmd => {
 				if(cmd.category === 'utility') util += cmd.name + ', ';
 				else if(cmd.category === 'moderation') mod += cmd.name + ', ';
 				else if(cmd.category === 'other') oth += cmd.name + ', ';
 				else if(cmd.category === 'fun') fun += cmd.name + ', ';
+				else if(cmd.category === 'information') inf += cmd.name + ', ';
 			});
 
 			const cmdEmbed = new MessageEmbed()
@@ -34,6 +36,7 @@ module.exports = {
 					{ name: '• Mod', value : `\`\`\`${mod || 'comming soon'}\`\`\``, inline : true },
 					{ name: '• Other', value : `\`\`\`${oth || 'comming soon'}\`\`\``, inline : true },
 					{ name: '• Fun', value : `\`\`\`${fun || 'comming soon'}\`\`\``, inline :true },
+					{ name: '• Information', value : `\`\`\`${inf || 'comming soon'}\`\`\``, inline :true },
 				);
 
 			return message.channel.send(cmdEmbed);

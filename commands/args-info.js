@@ -5,7 +5,7 @@ module.exports = {
 	description: 'Gives you information about imputed arguments.',
 	cooldown: 3,
 	args: true,
-	aliases: ['ai', 'a-i', 'args_info', 'a_i'],
+	aliases: ['ai', 'a-i'],
 	usage: 'message',
 	category: 'fun',
 	guildOnly: true,
