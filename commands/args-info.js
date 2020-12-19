@@ -2,13 +2,15 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'args-info',
-	description: 'Arguments Info',
+	description: 'Gives you information about imputed arguments.',
 	cooldown: 3,
 	args: true,
-	aliases: ['ai', 'a_i'],
+	aliases: ['ai', 'a-i'],
 	usage: 'message',
 	category: 'fun',
-	execute(message, args) {
+	guildOnly: true,
+
+	execute(client, message, args) {
 		const userIcon = message.author.displayAvatarURL();
 		const userName = message.author.username;
 		const exampleEmbed = new MessageEmbed()

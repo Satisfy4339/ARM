@@ -2,19 +2,22 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'ping',
-	description: 'Bot Ping',
-	cooldown: 3,
-	args: false,
 	aliases: ['latency'],
-	category: 'utilities',
-	execute(message) {
+	cooldown: 5,
+	usage: ' ',
+	description: 'Gathers information about the latency of the bot.',
+	args: false,
+	category : 'utility',
+	guildOnly: true,
+
+	execute(client, message) {
 		message.channel.send('📡 | Pinging the bot . . .').then(m => {
 			setTimeout(function() {
 				const ping = m.createdTimestamp - message.createdTimestamp;
 				const api = message.client.ws.ping;
 
 				const embed = new MessageEmbed()
-					.setAuthor('Bot Latency')
+					.setAuthor('Response Time')
 					.setDescription(`Bot Latency: \`${ping} ms\`\nAPI Latency: \`${api} ms\``)
 					.setColor('#70c7bc')
 					.setThumbnail('https://i.imgur.com/bjioQ87.png');
