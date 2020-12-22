@@ -15,7 +15,8 @@ module.exports = {
 	execute(client, message) {
 		const servers = client.guilds.cache.size;
 		const channels = client.channels.cache.size;
-		const users = message.client.guilds.cache.map((g) => g.memberCount).reduce((a, c) => a + c);
+		const totalUsers = message.client.guilds.cache.map((g) => g.memberCount).reduce((a, c) => a + c);
+		const users = client.users.cache.size;
 
 		let totalSeconds = (client.uptime / 1000);
 		const days = Math.floor(totalSeconds / 86400);
@@ -34,7 +35,8 @@ module.exports = {
 				{ name: '**Creator**', value: creator, inline: true },
 				{ name: '**Servers**', value: servers, inline: true },
 				{ name: '**Channels**', value: channels, inline: true },
-				{ name: '**Total Members**', value: users, inline: true },
+				{ name: '**Total Members**', value: totalUsers, inline: true },
+				{ name: '**Cached Users**', value: users, inline: true },
 				{ name: '**Invite**', value: botInvite, inline: true },
 				{ name: '**Support Server**', value: supportServer, inline: true },
 			)
