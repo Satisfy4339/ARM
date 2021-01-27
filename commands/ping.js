@@ -17,10 +17,9 @@ module.exports = {
 				const api = message.client.ws.ping;
 
 				const embed = new MessageEmbed()
-					.setAuthor('Response Time')
+					.setAuthor('Response Time', 'https://i.imgur.com/FycH6y3.png')
 					.setDescription(`Bot Latency: \`${ping} ms\`\nAPI Latency: \`${api} ms\``)
-					.setColor('#70c7bc')
-					.setThumbnail('https://i.imgur.com/bjioQ87.png');
+					.setColor('#70c7bc');
 
 				m.edit('', embed);
 			}, 2000);
